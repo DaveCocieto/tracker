@@ -1,0 +1,11 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+
+index_map:
+    path: /map
+    controller: App\Controller\MapController::index
+
+settings_map:
+    path: /settings
+    controller: App\Controller\MapController::mapSettings
