@@ -1,0 +1,12 @@
+.gmap {
+  background-color: pink;
+  height: 300px;
+
+  &.foo {
+    background-color: blue;
+  }
+
+  .bar {
+    background-color: purple;
+  }
+}
