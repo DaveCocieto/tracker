@@ -40,8 +40,10 @@ License: You must have a valid license purchased only from themeforest(the above
         <!-- /metronic/metronic-5.0.5/metronic_v5.0.5/metronic_v5.0.5/theme/default/dist/demo5 -->
 		<link href="/metronic/metronic-5.0.5/metronic_v5.0.5/metronic_v5.0.5/theme/default/dist/demo5/assets/vendors/base/vendors.bundle.css" rel="stylesheet" type="text/css" />
 		<link href="/metronic/metronic-5.0.5/metronic_v5.0.5/metronic_v5.0.5/theme/default/dist/demo5/assets/demo/demo5/base/style.bundle.css" rel="stylesheet" type="text/css" />
+        {% block stylesheet %}
+        {% endblock %}
 		<!--end::Base Styles -->
-		<link rel="shortcut icon" href="assets/demo/demo5/media/img/logo/favicon.ico" />
+		<link rel="shortcut icon" href="/metronic/metronic-5.0.5/metronic_v5.0.5/metronic_v5.0.5/theme/default/dist/demo5/assets/demo/demo5/media/img/logo/favicon.ico" />
 	</head>
 	<!-- end::Head -->
     <!-- end::Body -->
@@ -66,11 +68,13 @@ License: You must have a valid license purchased only from themeforest(the above
 		</div>
 		<!-- end::Scroll Top -->
 
-    	<!--begin::Base Scripts -->
-        <!-- /metronic/metronic-5.0.5/metronic_v5.0.5/metronic_v5.0.5/theme/default/dist/demo5 -->
-		<script src="/metronic/metronic-5.0.5/metronic_v5.0.5/metronic_v5.0.5/theme/default/dist/demo5/assets/vendors/base/vendors.bundle.js" type="text/javascript"></script>
-		<script src="/metronic/metronic-5.0.5/metronic_v5.0.5/metronic_v5.0.5/theme/default/dist/demo5/assets/demo/demo5/base/scripts.bundle.js" type="text/javascript"></script>
-		<!--end::Base Scripts -->
+        {% block javascripts %}
+        	<!--begin::Base Scripts -->
+            <!-- /metronic/metronic-5.0.5/metronic_v5.0.5/metronic_v5.0.5/theme/default/dist/demo5 -->
+    		<script src="/metronic/metronic-5.0.5/metronic_v5.0.5/metronic_v5.0.5/theme/default/dist/demo5/assets/vendors/base/vendors.bundle.js" type="text/javascript"></script>
+    		<script src="/metronic/metronic-5.0.5/metronic_v5.0.5/metronic_v5.0.5/theme/default/dist/demo5/assets/demo/demo5/base/scripts.bundle.js" type="text/javascript"></script>
+    		<!--end::Base Scripts -->
+        {% endblock %}
         <!--begin::Page Vendors -->
 		<script src="assets/vendors/custom/fullcalendar/fullcalendar.bundle.js" type="text/javascript"></script>
 		<!--end::Page Vendors -->
