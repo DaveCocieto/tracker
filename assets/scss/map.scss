@@ -1,6 +1,7 @@
 .gmap {
-  background-color: pink;
-  height: 300px;
+  background-color: white;
+  //height: 400px;
+  flex: 1;
 
   &.foo {
     background-color: blue;

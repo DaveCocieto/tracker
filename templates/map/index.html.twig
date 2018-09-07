@@ -2,17 +2,18 @@
 
 {% block stylesheet %}
     <link href="{{ asset('/build/map.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('/tomtom/map.css') }}" rel="stylesheet" type="text/css" />
 {% endblock %}
 
 {% block javascripts %}
     {{ parent() }}
 
+    <script src='{{ asset('/tomtom/tomtom.min.js') }}'></script>
     <script src="{{ asset('/build/map.js') }}"></script>
 {% endblock %}
 
 {% block body %}
     <!--<div style="background-color: skyblue;height: 200px;">-->
-    <div class="gmap">
-    MAP
+    <div id="map" class="gmap">
     </div>
 {% endblock %}
