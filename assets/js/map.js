@@ -4,7 +4,7 @@ console.log('MAP INIT');
 
 tomtom.setProductInfo('tracker', '0.1');
 var map = tomtom.map('map', {
-    key: 'R5ReqxA7EXDWXydRyVgwI4CQEpDPgegX',
+    key: 'key',
     //source: 'vector',
     basePath: '/tomtom/',
     center: [52.083134, 19.183603],
