@@ -9,3 +9,11 @@ index_map:
 settings_map:
     path: /settings
     controller: App\Controller\MapController::mapSettings
+
+save_coordinate:
+    path: /save
+    controller: App\Controller\MapController::saveCoordinate
+
+get_coordintes:
+    path: /get_coordintes
+    controller: App\Controller\MapController::getCoordinates
