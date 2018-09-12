@@ -2,6 +2,25 @@ require('../scss/map.scss');
 
 console.log('MAP INIT');
 
+var loadRouteToMap = function(data) {
+    //console.log(data);
+    //console.log(data.target);
+    var element = $(data.target);
+    var route_id = element.data('route-id')
+    console.log(route_id);
+    //alert('load route');
+
+    $.ajax({
+      /*method: "POST",
+      url: "some.php",
+      data: { name: "John", location: "Boston" }*/
+      method: 'GET',
+      url: '/get_route/' + route_id
+    }).done(function(data) {
+      console.log(data);
+    });
+};
+
 tomtom.setProductInfo('tracker', '0.1');
 var map = tomtom.map('map', {
     key: 'key',
@@ -48,3 +67,7 @@ var polygon = {
 };
 var geoJson = tomtom.L.geoJson(polygon, { style: { color: '#00d7ff', opacity: 0.8 } }).addTo(map);
 map.fitBounds(geoJson.getBounds(), { padding: [5, 5] });
+
+$('.route-item').click(function(e) {
+    loadRouteToMap(e);
+});

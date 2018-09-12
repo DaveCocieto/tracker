@@ -16,4 +16,14 @@
     <!--<div style="background-color: skyblue;height: 200px;">-->
     <div id="map" class="gmap">
     </div>
+
+    <div style="background-color: #18171B; color: white">
+        <div class="m-container m-container--responsive m-container--xxl m-container--full-height m-page__container">
+            {% for route in routes %}
+                <div style="padding: 4px 0; cursor: pointer;" class="route-item" data-route-id="{{ route.id }}">
+                    {{ route.name }}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 {% endblock %}

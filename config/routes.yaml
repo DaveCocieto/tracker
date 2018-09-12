@@ -10,6 +10,13 @@ settings_map:
     path: /settings
     controller: App\Controller\MapController::mapSettings
 
+get_route:
+    path: /get_route/{route_id}
+    controller: App\Controller\MapController::getRouteJSON
+    requirements:
+        page: '\d+'
+
+# tests
 save_coordinate:
     path: /save
     controller: App\Controller\MapController::saveCoordinate
