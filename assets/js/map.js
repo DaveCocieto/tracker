@@ -2,52 +2,31 @@ require('../scss/map.scss');
 
 console.log('MAP INIT');
 
-tomtom.setProductInfo('tracker', '0.1');
-var map = tomtom.map('map', {
-    key: 'key',
-    //source: 'vector',
-    basePath: '/tomtom/',
-    center: [52.083134, 19.183603],
-    zoom: 7
-});
+var map = 0;
 
-var languageLabel = L.DomUtil.create('label');
-languageLabel.innerHTML = 'Maps language';
-var languageSelector = tomtom.languageSelector.getHtmlElement(tomtom.globalLocaleService, 'maps');
-languageLabel.appendChild(languageSelector);
-tomtom.controlPanel({
-    position: 'bottomright',
-    title: 'Settings',
-    collapsed: true,
-    closeOnMapClick: false
-})
-    .addTo(map)
-    .addContent(languageLabel);
+var initMap = function() {
+    tomtom.setProductInfo('tracker', '0.1');
+    map = tomtom.map('map', {
+        key: 'key',
+        //source: 'vector',
+        basePath: '/tomtom/',
+        center: [52.083134, 19.183603],
+        zoom: 7
+    });
 
-// polygons
-/*var polygon = {
-    'type': 'FeatureCollection',
-    'features': [
-        {
-            'type': 'Feature',
-            'properties': {},
-            'geometry': {
-                //'type': 'Polygon',
-                'type': 'MultiLineString',
-                'coordinates': [
-                    [
-                        [19.313552, 53.270307],
-                        [20.871820, 52.664186],
-                        [17.329218, 51.687699],
-                        [21.624176, 50.415359]
-                    ]
-                ]
-            }
-        }
-    ]
+    var languageLabel = L.DomUtil.create('label');
+    languageLabel.innerHTML = 'Maps language';
+    var languageSelector = tomtom.languageSelector.getHtmlElement(tomtom.globalLocaleService, 'maps');
+    languageLabel.appendChild(languageSelector);
+    tomtom.controlPanel({
+        position: 'bottomright',
+        title: 'Settings',
+        collapsed: true,
+        closeOnMapClick: false
+    })
+        .addTo(map)
+        .addContent(languageLabel);
 };
-var geoJson = tomtom.L.geoJson(polygon, { style: { color: '#00d7ff', opacity: 0.8 } }).addTo(map);
-map.fitBounds(geoJson.getBounds(), { padding: [5, 5] });*/
 
 var clearMap = function() {
     map.eachLayer(function (layer) {
@@ -89,7 +68,7 @@ var loadRouteToMap = function(json) {
     };
 
     clearMap();
-    var geoJson = tomtom.L.geoJson(polyline, { style: { color: '#00d7ff', opacity: 0.8 } }).addTo(map);
+    var geoJson = tomtom.L.geoJson(polyline, { style: { color: '#08ff00', opacity: 1, weight: 6 } }).addTo(map);
     map.fitBounds(geoJson.getBounds(), { padding: [5, 5] });
 };
 
@@ -108,6 +87,22 @@ var loadRouteFromDB = function(data) {
     });
 };
 
+var toggleRoutesContainer = function(data) {
+    if ($('#routes-container').is(':hidden')) {
+        $('#routes-container').show();
+        $(data.target).html('Zwiń');
+    } else {
+        $('#routes-container').hide();
+        $(data.target).html('Rozwiń');
+    }
+};
+
+initMap();
+
 $('.route-item').click(function(e) {
     loadRouteFromDB(e);
+});
+
+$('.routes-container-close').click(function(e) {
+    toggleRoutesContainer(e);
 });

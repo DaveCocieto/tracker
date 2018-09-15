@@ -14,7 +14,19 @@ class SampleRoutesCommand extends Command {
     private $routes = [
         0 => 'Route1',
         1 => 'Route2',
-        //2 => 'Route3'
+        2 => 'Route3',
+        3 => 'Route4',
+        4 => 'Route5',
+        5 => 'Route6',
+        6 => 'Route7',
+        7 => 'Route8',
+        8 => 'Route9',
+        9 => 'Route10',
+        10 => 'Route11',
+        11 => 'Route12',
+        12 => 'Route13',
+        13 => 'Route14',
+        14 => 'Route15',
     ];
 
     private $coordinates = [
@@ -136,6 +148,148 @@ class SampleRoutesCommand extends Command {
                 'lng' => '18.664355',
                 'route_id' => 2
             ],
+        ],
+        2 => [
+            [
+                'lat' => '50.016616',
+                'lng' => '19.95943',
+                'route_id' => 3
+            ],
+            [
+                'lat' => '50.018187',
+                'lng' => '19.959602',
+                'route_id' => 3
+            ],
+            [
+                'lat' => '50.020062',
+                'lng' => '19.960289',
+                'route_id' => 3
+            ],
+            [
+                'lat' => '50.021607',
+                'lng' => '19.960374',
+                'route_id' => 3
+            ],
+            [
+                'lat' => '50.023674',
+                'lng' => '19.960546',
+                'route_id' => 3
+            ],
+            [
+                'lat' => '50.02621',
+                'lng' => '19.959972',
+                'route_id' => 3
+            ],
+            [
+                'lat' => '50.028581',
+                'lng' => '19.958813',
+                'route_id' => 3
+            ],
+            [
+                'lat' => '50.029546',
+                'lng' => '19.953449',
+                'route_id' => 3
+            ],
+            [
+                'lat' => '50.030345',
+                'lng' => '19.950659',
+                'route_id' => 3
+            ],
+            [
+                'lat' => '50.031448',
+                'lng' => '19.9489',
+                'route_id' => 3
+            ],
+            [
+                'lat' => '50.032606',
+                'lng' => '19.947269',
+                'route_id' => 3
+            ],
+            [
+                'lat' => '50.033126',
+                'lng' => '19.946904',
+                'route_id' => 3
+            ],
+            [
+                'lat' => '50.033546',
+                'lng' => '19.947011',
+                'route_id' => 3
+            ],
+            [
+                'lat' => '50.034814',
+                'lng' => '19.947644',
+                'route_id' => 3
+            ],
+            [
+                'lat' => '50.035407',
+                'lng' => '19.948202',
+                'route_id' => 3
+            ],
+            [
+                'lat' => '50.035923',
+                'lng' => '19.948846',
+                'route_id' => 3
+            ],
+            [
+                'lat' => '50.038588',
+                'lng' => '19.952415',
+                'route_id' => 3
+            ],
+            [
+                'lat' => '50.040034',
+                'lng' => '19.954639',
+                'route_id' => 3
+            ],
+            [
+                'lat' => '50.040703',
+                'lng' => '19.956323',
+                'route_id' => 3
+            ],
+            [
+                'lat' => '50.041054',
+                'lng' => '19.957943',
+                'route_id' => 3
+            ],
+            [
+                'lat' => '50.04133',
+                'lng' => '19.959285',
+                'route_id' => 3
+            ],
+            [
+                'lat' => '50.04151',
+                'lng' => '19.960648',
+                'route_id' => 3
+            ],
+            [
+                'lat' => '50.041785',
+                'lng' => '19.962966',
+                'route_id' => 3
+            ],
+            [
+                'lat' => '50.041799',
+                'lng' => '19.963513',
+                'route_id' => 3
+            ],
+            [
+                'lat' => '50.041916',
+                'lng' => '19.964403',
+                'route_id' => 3
+            ],
+            [
+                'lat' => '50.04215',
+                'lng' => '19.965079',
+                'route_id' => 3
+            ],
+            [
+                'lat' => '50.042433',
+                'lng' => '19.965584',
+                'route_id' => 3
+            ],
+            [
+                'lat' => '50.042867',
+                'lng' => '19.966517',
+                'route_id' => 3
+            ],
         ]
     ];
 
@@ -168,13 +322,24 @@ class SampleRoutesCommand extends Command {
 
             $entityManager->persist($r);
 
-            if (!empty($this->coordinates[$key])) {
-                foreach ($this->coordinates[$key] as $coordinate) {
+            $i = $key;
+            $copied = false;
+            if ($key > 2) {
+                $i = rand(0, 2);
+                $copied = true;
+            }
+
+            if (!empty($this->coordinates[$i])) {
+                foreach ($this->coordinates[$i] as $coordinate) {
                     $c = new Coordinates();
                     $c->setLat($coordinate['lat']);
                     $c->setLng($coordinate['lng']);
                     $c->setCreated(new \DateTime(date('Y-m-d H:i:s')));
-                    $c->setRouteId($coordinate['route_id']);
+                    $route_id = $coordinate['route_id'];
+                    if ($copied) {
+                        $route_id = $key + 1;
+                    }
+                    $c->setRouteId($route_id);
 
                     $entityManager->persist($c);
                 }
