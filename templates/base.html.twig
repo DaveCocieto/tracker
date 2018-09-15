@@ -58,7 +58,9 @@ License: You must have a valid license purchased only from themeforest(the above
 			</div>
 			<!-- end::Body -->
 
-            {{ include('elements/footer.html.twig') }}
+            {% if show_footer is defined and show_footer == true %}
+                {{ include('elements/footer.html.twig') }}
+            {% endif %}
 		</div>
 		<!-- end:: Page -->
 
